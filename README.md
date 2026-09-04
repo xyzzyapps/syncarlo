@@ -67,6 +67,28 @@ python -m syncarlo examples/todo.spec.md --particles 0
 
 Same pattern as an agent harness Best-of-N / rollout, without an LLM.
 
+## Research
+
+SynCarlo follows **Neural Program Search** (Polosukhin & Skidanov, 2018):
+
+> Illia Polosukhin and Alex Skidanov. *Neural Program Search: Solving Programming Tasks from Description and Examples.* arXiv:1802.04335, 2018.  
+> https://arxiv.org/abs/1802.04335
+
+That paper synthesizes programs in a **typed Lisp DSL** from a short English description plus I/O examples. A Seq2Tree model scores AST symbols; **tree beam search** fills holes; the first complete tree that **passes the tests** wins.
+
+SynCarlo uses the same split — **language ranks candidates, search enumerates, execution picks** — with different pieces:
+
+| | Neural Program Search | SynCarlo |
+| --- | --- | --- |
+| Spec | One paragraph + I/O pairs | Markdown heading + numbered sentences |
+| Search space | Their Lisp DSL (`map` / `filter` / `reduce`) | A small Lisp IR (`let` / `call` / `if` / `for`) over a Python catalog |
+| Language | Trained Seq2Tree | BM25 + English roles (no neural net) |
+| Search | Tree beam over AST nodes | Sequential Monte Carlo over top-k fills |
+| Checker | Run I/O tests | Compile + sandboxed dry-run of the **Python** translation |
+| Output | Lisp in their DSL | Lisp IR → Python |
+
+Also related: DeepCoder (Balog et al., 2016), FlashFill / PROSE, and the [nearai/program_synthesis](https://github.com/nearai/program_synthesis) AlgoLISP line that implements the paper.
+
 ## Layout
 
 | Path | Role |

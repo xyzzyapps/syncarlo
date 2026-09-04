@@ -1,0 +1,22 @@
+[project]
+name = "syncarlo"
+version = "0.1.0"
+description = "SynCarlo: roll Monte Carlo search over English until it becomes Python"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["program-synthesis", "monte-carlo", "nlu", "search", "markdown"]
+
+[project.scripts]
+syncarlo = "syncarlo.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

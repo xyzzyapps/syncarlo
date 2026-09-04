@@ -1,0 +1,6 @@
+# Optional extra training. The synthesizer is supposed to work WITHOUT this
+# file: intents come from Python names/docstrings/signatures, entities from
+# English prepositions and literals.
+#
+# Keep this empty unless you are measuring a custom domain lexicon.
+nlu: []

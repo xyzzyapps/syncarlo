@@ -87,7 +87,21 @@ SynCarlo uses the same split — **language ranks candidates, search enumerates,
 | Checker | Run I/O tests | Compile + sandboxed dry-run of the **Python** translation |
 | Output | Lisp in their DSL | Lisp IR → Python |
 
-Also related: DeepCoder (Balog et al., 2016), FlashFill / PROSE, and the [nearai/program_synthesis](https://github.com/nearai/program_synthesis) AlgoLISP line that implements the paper.
+Also related: DeepCoder (Balog et al., 2016) and FlashFill / PROSE.
+
+### Related repositories
+
+Nothing public matched “heading = function, numbered English → retrieve docstring/API → Lisp → Python” as a non-LLM pipeline. Closest public code:
+
+| Repo | What it does | vs SynCarlo |
+| --- | --- | --- |
+| [nearai/program_synthesis](https://github.com/nearai/program_synthesis) | AlgoLISP / Karel / NAPS — neural synthesis; implements Neural Program Search | Same Lisp+search idea; they train Seq2Tree, we retrieve Python |
+| [ayushnoori/program-synthesis](https://github.com/ayushnoori/program-synthesis) | Bottom-up enumerative synthesis (BUSTLE-style) from **I/O examples** | Search without English/markdown |
+| [shuyanzhou/docprompting](https://github.com/shuyanzhou/docprompting) | Retrieve docs, then generate code (ICLR 2023) | Doc retrieval like our catalog; **neural** decoder |
+| [uilicious/english-compiler](https://github.com/uilicious/english-compiler) | Markdown spec → code | Same spec-as-source instinct; **LLM** compiler |
+| [flxsosa/ProgramSearch](https://github.com/flxsosa/ProgramSearch) | Write–Execute–Assess (NeurIPS 2019) — REPL-guided search | Execute-to-score like our sandbox; neural policy |
+| [namin/holey](https://github.com/namin/holey) | Fill holes in Python with SMT + optional LLM | Sketch filling; not markdown NLU |
+| [RasaHQ/rasa](https://github.com/RasaHQ/rasa) | Intent + entity NLU for chatbots | Slot filling analogue; not codegen (we do not use Rasa) |
 
 ## Layout
 
